@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/cherry_planks",
+    "east": "duwangfordshire:block/cherry_blossom_crafting_table_side",
+    "north": "duwangfordshire:block/cherry_blossom_crafting_table_front",
+    "particle": "duwangfordshire:block/cherry_blossom_crafting_table_front",
+    "south": "duwangfordshire:block/cherry_blossom_crafting_table_side",
+    "up": "duwangfordshire:block/cherry_blossom_crafting_table_top",
+    "west": "duwangfordshire:block/cherry_blossom_crafting_table_front"
+  }
+}
