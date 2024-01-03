@@ -2,24 +2,21 @@ package com.sheppard.registry;
 
 import com.sheppard.item.GoldBow;
 import com.sheppard.item.IronBow;
-import net.minecraft.client.item.ClampedModelPredicateProvider;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
-public class DuwangfordshirePredicateProviders {
+public class PredicateProviderRegistry {
 
     public static void registerPredicateProviders() {
         //gold bow
-        ModelPredicateProviderRegistry.register(DuwangfordshireItems.GOLD_BOW, new Identifier("pull"), (itemStack, clientWorld, livingEntity, i) -> {
+        ModelPredicateProviderRegistry.register(ItemRegistry.GOLD_BOW, new Identifier("pull"), (itemStack, clientWorld, livingEntity, i) -> {
             if(livingEntity == null) {
                 return 0.0F;
             }
             return livingEntity.getActiveItem() != itemStack ? 0.0F : GoldBow.getPullProgress(itemStack.getMaxUseTime() - livingEntity.getItemUseTimeLeft());
         });
 
-        ModelPredicateProviderRegistry.register(DuwangfordshireItems.GOLD_BOW, new Identifier("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
+        ModelPredicateProviderRegistry.register(ItemRegistry.GOLD_BOW, new Identifier("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;
             }
@@ -27,14 +24,14 @@ public class DuwangfordshirePredicateProviders {
         });
 
         //iron bow
-        ModelPredicateProviderRegistry.register(DuwangfordshireItems.IRON_BOW, new Identifier("pull"), (itemStack, clientWorld, livingEntity, i) -> {
+        ModelPredicateProviderRegistry.register(ItemRegistry.IRON_BOW, new Identifier("pull"), (itemStack, clientWorld, livingEntity, i) -> {
             if(livingEntity == null) {
                 return 0.0F;
             }
             return livingEntity.getActiveItem() != itemStack ? 0.0F : IronBow.getPullProgress(itemStack.getMaxUseTime() - livingEntity.getItemUseTimeLeft());
         });
 
-        ModelPredicateProviderRegistry.register(DuwangfordshireItems.IRON_BOW, new Identifier("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
+        ModelPredicateProviderRegistry.register(ItemRegistry.IRON_BOW, new Identifier("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;
             }

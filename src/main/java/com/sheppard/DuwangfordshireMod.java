@@ -1,11 +1,11 @@
 package com.sheppard;
 
-import com.sheppard.event.DuwangfordshireEventCallbacks;
-import com.sheppard.registry.DuwangfordshireBlocks;
-import com.sheppard.registry.DuwangfordshireItems;
+import com.sheppard.event.EventCallbacks;
+import com.sheppard.registry.BlockRegistry;
+import com.sheppard.registry.EntityRegistry;
+import com.sheppard.registry.ItemRegistry;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,10 +20,11 @@ public class DuwangfordshireMod implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Hello from Duwangfordshire!");
 
-		DuwangfordshireBlocks.registerBlocks();
-		DuwangfordshireItems.registerItems();
-		DuwangfordshireItems.registerItemGroups();
-		DuwangfordshireEventCallbacks.registerUseItemCallbacks();
+		BlockRegistry.registerBlocks();
+		ItemRegistry.registerItems();
+		ItemRegistry.registerItemGroups();
+		EventCallbacks.registerUseItemCallbacks();
+		//EntityRegistry.registerEntities();
 
 	}
 }

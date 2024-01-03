@@ -1,7 +1,7 @@
 package com.sheppard.datagen;
 
-import com.sheppard.registry.DuwangfordshireBlocks;
-import com.sheppard.registry.DuwangfordshireItems;
+import com.sheppard.registry.BlockRegistry;
+import com.sheppard.registry.ItemRegistry;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -12,15 +12,21 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Models;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.data.server.tag.ItemTagProvider;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
 import java.nio.file.Path;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint {
 
@@ -41,7 +47,7 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
         @Override
         public void generate(RecipeExporter exporter) {
             //cherry crafting table
-            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, DuwangfordshireBlocks.CHERRY_BLOSSOM_CRAFTING_TABLE)
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE)
                     .pattern("xx").pattern("xx")
                     .input('x', Blocks.CHERRY_PLANKS)
                     .criterion("has_cherry_planks", conditionsFromItem(Blocks.CHERRY_PLANKS))
@@ -56,7 +62,7 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
                     .offerTo(exporter);
 
             //gold bow
-            ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, DuwangfordshireItems.GOLD_BOW)
+            ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.GOLD_BOW)
                     .pattern("XY ")
                     .pattern("X Y")
                     .pattern("XY ")
@@ -66,7 +72,7 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
                     .offerTo(exporter);
 
             //iron bow
-            ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, DuwangfordshireItems.IRON_BOW)
+            ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.IRON_BOW)
                     .pattern("XY ")
                     .pattern("X Y")
                     .pattern("XY ")
@@ -74,7 +80,37 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
                     .input('X', Items.STRING)
                     .criterion("has_iron", conditionsFromItem(Items.IRON_INGOT))
                     .offerTo(exporter);
+
+            //Torch Arrow
+            ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.TORCH_ARROW, 3)
+                    .pattern("  Z")
+                    .pattern(" Y ")
+                    .pattern("X  ")
+                    .input('X', Items.FEATHER)
+                    .input('Y', Items.STICK)
+                    .input('Z', Items.TORCH)
+                    .criterion("has_torch", conditionsFromItem(Items.TORCH))
+                    .offerTo(exporter);
+
+            //Explosive Arrow
+            ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.EXPLOSIVE_ARROW, 3)
+                    .pattern("  Z")
+                    .pattern(" Y ")
+                    .pattern("X  ")
+                    .input('X', Items.FEATHER)
+                    .input('Y', Items.STICK)
+                    .input('Z', ItemRegistry.GUNPOWDER_SACHET)
+                    .criterion("has_gunpowder_sachet", conditionsFromItem(ItemRegistry.GUNPOWDER_SACHET))
+                    .offerTo(exporter);
+
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.GUNPOWDER_SACHET, 2)
+                    .input(Items.GUNPOWDER, 2)
+                    .input(Items.LEATHER, 2)
+                    .criterion("has_gunpowder", conditionsFromItem(Items.GUNPOWDER))
+                    .offerTo(exporter);
         }
+
+
     }
 
     private static class DuwangfordshireLootTableGenerator extends FabricBlockLootTableProvider {
@@ -84,7 +120,7 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
 
         @Override
         public void generate() {
-            addDrop(DuwangfordshireBlocks.CHERRY_BLOSSOM_CRAFTING_TABLE, drops(DuwangfordshireBlocks.CHERRY_BLOSSOM_CRAFTING_TABLE));
+            addDrop(BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE, drops(BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE));
         }
     }
 
@@ -103,6 +139,9 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
         public void generateItemModels(ItemModelGenerator itemModelGen) {
             //this item has weird json data, easier to write it manually
             //itemModelGen.register(DuwangfordshireItems.GOLD_BOW, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.EXPLOSIVE_ARROW, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.TORCH_ARROW, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.GUNPOWDER_SACHET, Models.GENERATED);
         }
     }
 
@@ -114,9 +153,12 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
 
         @Override
         public void generateTranslations(TranslationBuilder translationBuilder) {
-            translationBuilder.add(DuwangfordshireBlocks.CHERRY_BLOSSOM_CRAFTING_TABLE, "Cherry Crafting Table");
-            translationBuilder.add(DuwangfordshireItems.GOLD_BOW, "Gold Bow");
-            translationBuilder.add(DuwangfordshireItems.IRON_BOW, "Iron Bow");
+            translationBuilder.add(BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE, "Cherry Crafting Table");
+            translationBuilder.add(ItemRegistry.GOLD_BOW, "Gold Bow");
+            translationBuilder.add(ItemRegistry.IRON_BOW, "Iron Bow");
+            translationBuilder.add(ItemRegistry.EXPLOSIVE_ARROW, "Explosive Arrow");
+            translationBuilder.add(ItemRegistry.TORCH_ARROW, "Torch Arrow");
+            translationBuilder.add(ItemRegistry.GUNPOWDER_SACHET, "Gunpowder Sachet");
 
             try {
                 Optional<Path> existingFilePath = dataOutput.getModContainer().findPath("assets/duwangfordshire/lang/en_us.existing.json");

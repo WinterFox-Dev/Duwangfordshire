@@ -7,7 +7,7 @@ package com.sheppard.screen;
 
 import java.util.Optional;
 
-import com.sheppard.registry.DuwangfordshireBlocks;
+import com.sheppard.registry.BlockRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingInventory;
@@ -125,7 +125,7 @@ public class CherryCraftingScreenHandler extends AbstractRecipeScreenHandler<Rec
     }
 
     public boolean canUse(PlayerEntity player) {
-        return canUse(this.context, player, DuwangfordshireBlocks.CHERRY_BLOSSOM_CRAFTING_TABLE);
+        return canUse(this.context, player, BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE);
     }
 
     public ItemStack quickMove(PlayerEntity player, int slot) {

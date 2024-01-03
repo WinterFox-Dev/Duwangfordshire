@@ -9,7 +9,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class DuwangfordshireBlocks {
+public class BlockRegistry {
 
     public static final Block CHERRY_BLOSSOM_CRAFTING_TABLE = new CherryCraftingTableBlock(FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE));
 
