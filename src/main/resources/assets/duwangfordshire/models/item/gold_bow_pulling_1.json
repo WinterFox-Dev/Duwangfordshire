@@ -1,0 +1,6 @@
+{
+    "parent": "duwangfordshire:item/gold_bow",
+    "textures": {
+        "layer0": "duwangfordshire:item/gold_bow_pulling_1"
+    }
+}

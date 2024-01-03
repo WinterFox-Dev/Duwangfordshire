@@ -1,7 +1,7 @@
 package com.sheppard;
 
-import com.sheppard.block.DuwangfordshireBlocks;
-import com.sheppard.item.DuwangfordshireItems;
+import com.sheppard.registry.DuwangfordshireBlocks;
+import com.sheppard.registry.DuwangfordshireItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -20,5 +20,6 @@ public class DuwangfordshireMod implements ModInitializer {
 
 		DuwangfordshireBlocks.registerBlocks();
 		DuwangfordshireItems.registerItems();
+		DuwangfordshireItems.registerItemGroups();
 	}
 }

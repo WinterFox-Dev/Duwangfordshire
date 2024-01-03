@@ -7,7 +7,7 @@ package com.sheppard.screen;
 
 import java.util.Optional;
 
-import com.sheppard.block.DuwangfordshireBlocks;
+import com.sheppard.registry.DuwangfordshireBlocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingInventory;

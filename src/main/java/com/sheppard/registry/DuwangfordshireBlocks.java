@@ -1,6 +1,7 @@
-package com.sheppard.block;
+package com.sheppard.registry;
 
 import com.sheppard.DuwangfordshireMod;
+import com.sheppard.block.CherryCraftingTableBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
