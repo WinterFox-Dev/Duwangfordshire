@@ -8,10 +8,22 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Util;
+import org.apache.commons.compress.utils.Lists;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Optional;
 
 public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint {
@@ -22,6 +34,32 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
         pack.addProvider(DuwangfordshireEnglishLangProvider::new);
         pack.addProvider(DuwangfordshireModelGenerator::new);
         pack.addProvider(DuwangfordshireLootTableGenerator::new);
+        pack.addProvider(DuwangfordshireRecipeGenerator::new);
+    }
+
+    private static class DuwangfordshireRecipeGenerator extends FabricRecipeProvider {
+        public DuwangfordshireRecipeGenerator(FabricDataOutput dataOutput) {
+            super(dataOutput);
+        }
+
+        @Override
+        public void generate(RecipeExporter exporter) {
+            //cherry crafting table
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, DuwangfordshireBlocks.CHERRY_BLOSSOM_CRAFTING_TABLE)
+                    .pattern("xx").pattern("xx")
+                    .input('x', Blocks.CHERRY_PLANKS)
+                    .criterion("has_cherry_planks", conditionsFromItem(Blocks.CHERRY_PLANKS))
+                    .offerTo(exporter);
+
+
+            //vanilla crafting table
+
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.CRAFTING_TABLE)
+                    .pattern("xx").pattern(("xx"))
+                    .input('x', Ingredient.ofItems(Blocks.ACACIA_PLANKS, Blocks.BAMBOO_PLANKS, Blocks.BIRCH_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.MANGROVE_PLANKS, Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.WARPED_PLANKS))
+                    .criterion("has_planks", conditionsFromTag(ItemTags.PLANKS))
+                    .offerTo(exporter);
+        }
     }
 
     private static class DuwangfordshireLootTableGenerator extends FabricBlockLootTableProvider {
