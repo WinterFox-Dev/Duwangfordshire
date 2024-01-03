@@ -1,7 +1,7 @@
 package com.sheppard.registry;
 
-import com.sheppard.item.GoldBow;
-import com.sheppard.item.IronBow;
+import com.sheppard.item.GoldBowItem;
+import com.sheppard.item.IronBowItem;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.util.Identifier;
 
@@ -13,7 +13,7 @@ public class PredicateProviderRegistry {
             if(livingEntity == null) {
                 return 0.0F;
             }
-            return livingEntity.getActiveItem() != itemStack ? 0.0F : GoldBow.getPullProgress(itemStack.getMaxUseTime() - livingEntity.getItemUseTimeLeft());
+            return livingEntity.getActiveItem() != itemStack ? 0.0F : GoldBowItem.getPullProgress(itemStack.getMaxUseTime() - livingEntity.getItemUseTimeLeft());
         });
 
         ModelPredicateProviderRegistry.register(ItemRegistry.GOLD_BOW, new Identifier("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
@@ -28,7 +28,7 @@ public class PredicateProviderRegistry {
             if(livingEntity == null) {
                 return 0.0F;
             }
-            return livingEntity.getActiveItem() != itemStack ? 0.0F : IronBow.getPullProgress(itemStack.getMaxUseTime() - livingEntity.getItemUseTimeLeft());
+            return livingEntity.getActiveItem() != itemStack ? 0.0F : IronBowItem.getPullProgress(itemStack.getMaxUseTime() - livingEntity.getItemUseTimeLeft());
         });
 
         ModelPredicateProviderRegistry.register(ItemRegistry.IRON_BOW, new Identifier("pulling"), (itemStack, clientWorld, livingEntity, i) -> {

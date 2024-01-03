@@ -1,0 +1,35 @@
+{
+    "textures": {
+        "particle": "duwangfordshire:block/enderite_end_portal_frame_side",
+        "bottom": "block/end_stone",
+        "top": "duwangfordshire:block/enderite_end_portal_frame_top",
+        "eye": "duwangfordshire:block/enderite_end_portal_frame_eye",
+        "south": "duwangfordshire:block/enderite_end_portal_frame_side",
+        "west": "duwangfordshire:block/enderite_end_portal_frame_side",
+        "east": "duwangfordshire:block/enderite_end_portal_frame_side",
+        "north": "duwangfordshire:block/enderite_end_portal_frame_side_north"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 13, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#top" },
+                "north": { "uv": [ 0, 3, 16, 16 ], "texture": "#north", "cullface": "north" },
+                "south": { "uv": [ 0, 3, 16, 16 ], "texture": "#south", "cullface": "south" },
+                "west":  { "uv": [ 0, 3, 16, 16 ], "texture": "#west", "cullface": "west" },
+                "east":  { "uv": [ 0, 3, 16, 16 ], "texture": "#east", "cullface": "east" }
+            }
+        },
+        {   "from": [ 4, 13, 4 ],
+            "to": [ 12, 16, 12 ],
+            "faces": {
+                "up":    { "uv": [ 4, 4, 12, 12 ], "texture": "#eye", "cullface": "up" },
+                "north": { "uv": [ 4, 0, 12,  3 ], "texture": "#eye" },
+                "south": { "uv": [ 4, 0, 12,  3 ], "texture": "#eye" },
+                "west":  { "uv": [ 4, 0, 12,  3 ], "texture": "#eye" },
+                "east":  { "uv": [ 4, 0, 12,  3 ], "texture": "#eye" }
+            }
+        }
+    ]
+}

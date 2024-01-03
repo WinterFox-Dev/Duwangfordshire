@@ -1,5 +1,6 @@
 package com.sheppard.datagen;
 
+import com.sheppard.DuwangfordshireMod;
 import com.sheppard.registry.BlockRegistry;
 import com.sheppard.registry.ItemRegistry;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -9,11 +10,13 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
 import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.data.server.tag.ItemTagProvider;
@@ -25,6 +28,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -51,6 +55,16 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
                     .pattern("xx").pattern("xx")
                     .input('x', Blocks.CHERRY_PLANKS)
                     .criterion("has_cherry_planks", conditionsFromItem(Blocks.CHERRY_PLANKS))
+                    .offerTo(exporter);
+
+            //Netherite Anvil
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.NETHERITE_ANVIL)
+                    .pattern("ZZZ")
+                    .pattern(" Y ")
+                    .pattern("YYY")
+                    .input('Z', Items.NETHERITE_BLOCK)
+                    .input('Y', Items.NETHERITE_INGOT)
+                    .criterion("has_netherite_block", conditionsFromItem(Items.NETHERITE_BLOCK))
                     .offerTo(exporter);
 
 
@@ -103,11 +117,37 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
                     .criterion("has_gunpowder_sachet", conditionsFromItem(ItemRegistry.GUNPOWDER_SACHET))
                     .offerTo(exporter);
 
+            //Enderite End Portal Frame
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.ENDERITE_END_PORTAL_FRAME_BLOCK)
+                    .pattern("X X")
+                    .pattern("YXY")
+                    .pattern("YYY")
+                    .input('X', ItemRegistry.ENDERITE_INGOT)
+                    .input('Y', Blocks.END_STONE)
+                    .criterion("has_enderite_ingot", conditionsFromItem(ItemRegistry.ENDERITE_INGOT))
+                    .offerTo(exporter);
+
+
+            //gunpowder sachet
             ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.GUNPOWDER_SACHET, 2)
                     .input(Items.GUNPOWDER, 2)
                     .input(Items.LEATHER, 2)
                     .criterion("has_gunpowder", conditionsFromItem(Items.GUNPOWDER))
                     .offerTo(exporter);
+
+            //Synthetic Eye of Ender
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.SYNTHETIC_ENDER_EYE, 1)
+                    .input(ItemRegistry.ENDERITE_INGOT, 1)
+                    .input(Items.ENDER_EYE, 1)
+                    .criterion("has_enderite_ingot", conditionsFromItem(ItemRegistry.ENDERITE_INGOT))
+                    .offerTo(exporter);
+
+            //SMELTING
+
+            //enderite ingot
+            RecipeProvider.offerSmelting(exporter, List.of(BlockRegistry.ENDERITE_ORE), RecipeCategory.MISC, ItemRegistry.ENDERITE_INGOT, 0.45F, 200, DuwangfordshireMod.MODID);
+            RecipeProvider.offerBlasting(exporter, List.of(BlockRegistry.ENDERITE_ORE), RecipeCategory.MISC, ItemRegistry.ENDERITE_INGOT, 0.45F, 100, DuwangfordshireMod.MODID);
+
         }
 
 
@@ -121,6 +161,9 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
         @Override
         public void generate() {
             addDrop(BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE, drops(BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE));
+            addDrop(BlockRegistry.NETHERITE_ANVIL, drops(BlockRegistry.NETHERITE_ANVIL));
+            addDrop(BlockRegistry.ENDERITE_ORE, drops(BlockRegistry.ENDERITE_ORE));
+            addDrop(BlockRegistry.ENDERITE_END_PORTAL_FRAME_BLOCK, drops(BlockRegistry.ENDERITE_END_PORTAL_FRAME_BLOCK));
         }
     }
 
@@ -133,6 +176,8 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
         public void generateBlockStateModels(BlockStateModelGenerator bsmGen) {
             //this block has weird json data, easier just to write it manually
             //bsmGen.registerSimpleCubeAll(DuwangfordshireBlocks.CHERRY_BLOSSOM_CRAFTING_TABLE);
+            bsmGen.registerAnvil(BlockRegistry.NETHERITE_ANVIL);
+            bsmGen.registerSimpleCubeAll(BlockRegistry.ENDERITE_ORE);
         }
 
         @Override
@@ -142,6 +187,8 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             itemModelGen.register(ItemRegistry.EXPLOSIVE_ARROW, Models.GENERATED);
             itemModelGen.register(ItemRegistry.TORCH_ARROW, Models.GENERATED);
             itemModelGen.register(ItemRegistry.GUNPOWDER_SACHET, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.ENDERITE_INGOT, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.SYNTHETIC_ENDER_EYE, Models.GENERATED);
         }
     }
 
@@ -159,6 +206,11 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             translationBuilder.add(ItemRegistry.EXPLOSIVE_ARROW, "Explosive Arrow");
             translationBuilder.add(ItemRegistry.TORCH_ARROW, "Torch Arrow");
             translationBuilder.add(ItemRegistry.GUNPOWDER_SACHET, "Gunpowder Sachet");
+            translationBuilder.add(BlockRegistry.NETHERITE_ANVIL, "Netherite Anvil");
+            translationBuilder.add(BlockRegistry.ENDERITE_ORE, "Enderite Ore");
+            translationBuilder.add(ItemRegistry.ENDERITE_INGOT, "Enderite Ingot");
+            translationBuilder.add(ItemRegistry.SYNTHETIC_ENDER_EYE, "Eye of Enderite");
+            translationBuilder.add(BlockRegistry.ENDERITE_END_PORTAL_FRAME_BLOCK, "Enderite Portal Frame");
 
             try {
                 Optional<Path> existingFilePath = dataOutput.getModContainer().findPath("assets/duwangfordshire/lang/en_us.existing.json");

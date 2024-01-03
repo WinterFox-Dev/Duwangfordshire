@@ -1,9 +1,7 @@
 package com.sheppard;
 
 import com.sheppard.event.EventCallbacks;
-import com.sheppard.registry.BlockRegistry;
-import com.sheppard.registry.EntityRegistry;
-import com.sheppard.registry.ItemRegistry;
+import com.sheppard.registry.*;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -23,8 +21,10 @@ public class DuwangfordshireMod implements ModInitializer {
 		BlockRegistry.registerBlocks();
 		ItemRegistry.registerItems();
 		ItemRegistry.registerItemGroups();
-		EventCallbacks.registerUseItemCallbacks();
-		//EntityRegistry.registerEntities();
+		EntityRegistry.registerEntities();
+		EnchantmentRegistry.registerEnchantments();
+		EventCallbacks.registerCallbacks();
+		WorldGenRegistry.registerBiomeModifications();
 
 	}
 }

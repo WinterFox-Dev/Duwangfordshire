@@ -12,26 +12,22 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-import java.util.function.Predicate;
-
-public class IronBow extends RangedWeaponItem implements Vanishable {
+public class IronBowItem extends BowItem implements Vanishable {
     public static final float TICKS_PER_SECOND = 20F;
     public static int RANGE = 15;
 
-    public IronBow(FabricItemSettings settings) {
+    public IronBowItem(FabricItemSettings settings) {
         super(settings);
     }
 
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         float f;
-        if (!(user instanceof PlayerEntity)) {
+        if (!(user instanceof PlayerEntity playerEntity)) {
             return;
         }
-        PlayerEntity playerEntity = (PlayerEntity)user;
         boolean creativemode_or_infinity = playerEntity.getAbilities().creativeMode || EnchantmentHelper.getLevel(Enchantments.INFINITY, stack) > 0;
         ItemStack itemStack = playerEntity.getProjectileType(stack);
         if (itemStack.isEmpty() && !creativemode_or_infinity) {
@@ -88,15 +84,7 @@ public class IronBow extends RangedWeaponItem implements Vanishable {
 
         return f;
     }
-
-    public int getMaxUseTime(ItemStack stack) {
-        return 72000;
-    }
-
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BOW;
-    }
-
+    @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         boolean bl = !user.getProjectileType(itemStack).isEmpty();
@@ -107,10 +95,6 @@ public class IronBow extends RangedWeaponItem implements Vanishable {
             return TypedActionResult.consume(itemStack);
         }
     }
-
-    public Predicate<ItemStack> getProjectiles() {
-        return BOW_PROJECTILES;
-    }
-
+    @Override
     public int getRange() { return RANGE; }
 }
