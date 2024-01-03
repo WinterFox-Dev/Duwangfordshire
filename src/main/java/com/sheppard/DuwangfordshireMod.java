@@ -1,9 +1,11 @@
 package com.sheppard;
 
+import com.sheppard.event.DuwangfordshireEventCallbacks;
 import com.sheppard.registry.DuwangfordshireBlocks;
 import com.sheppard.registry.DuwangfordshireItems;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,5 +23,7 @@ public class DuwangfordshireMod implements ModInitializer {
 		DuwangfordshireBlocks.registerBlocks();
 		DuwangfordshireItems.registerItems();
 		DuwangfordshireItems.registerItemGroups();
+		DuwangfordshireEventCallbacks.registerUseItemCallbacks();
+
 	}
 }
