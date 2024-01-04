@@ -25,6 +25,9 @@ public class DuwangfordshireMod implements ModInitializer {
 		EnchantmentRegistry.registerEnchantments();
 		EventCallbacks.registerCallbacks();
 		WorldGenRegistry.registerBiomeModifications();
+		StatusEffectRegistry.registerStatusEffects();
+		ItemRegistry.registerPotions();
+		ItemRegistry.registerPotionRecipes();
 
 	}
 }

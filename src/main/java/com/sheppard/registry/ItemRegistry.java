@@ -3,10 +3,11 @@ package com.sheppard.registry;
 import com.sheppard.DuwangfordshireMod;
 import com.sheppard.item.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.item.*;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.Potions;
+import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
@@ -22,6 +23,10 @@ public class ItemRegistry {
     public static final Item GUNPOWDER_SACHET = new Item(new FabricItemSettings());
     public static final Item ENDERITE_INGOT = new Item(new FabricItemSettings());
     public static final Item SYNTHETIC_ENDER_EYE = new SyntheticEyeOfEnderItem(new FabricItemSettings());
+
+    public static final Potion TELEPORT_POTION = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 20, 0)));
+    public static final Potion TELEPORT_POTION_POTENT = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion_potent"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 20, 1)));
+    public static final Potion TELEPORT_POTION_LONG = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion_long"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 40, 0)));
 
     //item groups
     private static final ItemGroup DUWANGFORD_ITEMGROUP = ItemGroup.create(ItemGroup.Row.TOP, 1)
@@ -54,6 +59,16 @@ public class ItemRegistry {
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "gunpowder_sachet"), GUNPOWDER_SACHET);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "enderite_ingot"), ENDERITE_INGOT);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "synthetic_ender_eye"), SYNTHETIC_ENDER_EYE);
+    }
+
+    public static void registerPotions() {
+
+    }
+
+    public static void registerPotionRecipes() {
+        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Items.ENDER_PEARL, ItemRegistry.TELEPORT_POTION);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.GLOWSTONE_DUST, ItemRegistry.TELEPORT_POTION_POTENT);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.REDSTONE, ItemRegistry.TELEPORT_POTION_LONG);
     }
 
     public static void registerItemGroups() {

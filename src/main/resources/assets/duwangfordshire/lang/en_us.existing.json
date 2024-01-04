@@ -1,4 +1,17 @@
 {
   "itemGroup.duwangfordshire.duwangfordshire_group": "Duwangfordshire Items",
-  "enchantment.duwangfordshire.lava_walker": "Lava Walker"
+  "enchantment.duwangfordshire.lava_walker": "Lava Walker",
+  "effect.duwangfordshire.teleport": "Random Teleportation",
+  "item.minecraft.potion.effect.teleport_potion_potent": "Potion of Transposition",
+  "item.minecraft.potion.effect.teleport_potion_long": "Potion of Transposition",
+  "item.minecraft.potion.effect.teleport_potion": "Potion of Transposition",
+  "item.minecraft.tipped_arrow.effect.teleport_potion": "Arrow of Transposition",
+  "item.minecraft.tipped_arrow.effect.teleport_potion_long": "Arrow of Transposition",
+  "item.minecraft.tipped_arrow.effect.teleport_potion_potent": "Arrow of Transposition",
+  "item.minecraft.lingering_potion.effect.teleport_potion": "Lingering Potion of Transposition",
+  "item.minecraft.lingering_potion.effect.teleport_potion_long": "Lingering Potion of Transposition",
+  "item.minecraft.lingering_potion.effect.teleport_potion_potent": "Lingering Potion of Transposition",
+  "item.minecraft.splash_potion.effect.teleport_potion": "Splash Potion of Transposition",
+  "item.minecraft.splash_potion.effect.teleport_potion_long": "Splash Potion of Transposition",
+  "item.minecraft.splash_potion.effect.teleport_potion_potent": "Splash Potion of Transposition"
 }
