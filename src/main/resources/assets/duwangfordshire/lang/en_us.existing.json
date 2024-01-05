@@ -13,5 +13,23 @@
   "item.minecraft.lingering_potion.effect.teleport_potion_potent": "Lingering Potion of Transposition",
   "item.minecraft.splash_potion.effect.teleport_potion": "Splash Potion of Transposition",
   "item.minecraft.splash_potion.effect.teleport_potion_long": "Splash Potion of Transposition",
-  "item.minecraft.splash_potion.effect.teleport_potion_potent": "Splash Potion of Transposition"
+  "item.minecraft.splash_potion.effect.teleport_potion_potent": "Splash Potion of Transposition",
+
+  "effect.duwangfordshire.teleport_bed": "Teleport To Bed",
+  "item.minecraft.potion.effect.teleport_bed_potion": "Potion of Recall",
+  "item.minecraft.tipped_arrow.effect.teleport_bed_potion": "Arrow of Recall",
+  "item.minecraft.lingering_potion.effect.teleport_bed_potion": "Lingering Potion of Recall",
+  "item.minecraft.splash_potion.effect.teleport_bed_potion": "Splash Potion of Recall",
+
+  "effect.duwangfordshire.teleport_end": "Teleport To End",
+  "item.minecraft.potion.effect.teleport_end_potion": "Potion of End Transposition",
+  "item.minecraft.tipped_arrow.effect.teleport_end_potion": "Arrow of End Transposition",
+  "item.minecraft.lingering_potion.effect.teleport_end_potion": "Lingering Potion of End Transposition",
+  "item.minecraft.splash_potion.effect.teleport_end_potion": "Splash Potion of End Transposition",
+
+  "effect.duwangfordshire.teleport_nether": "Teleport To Nether",
+  "item.minecraft.potion.effect.teleport_nether_potion": "Potion of Nether Transposition",
+  "item.minecraft.tipped_arrow.effect.teleport_nether_potion": "Arrow of Nether Transposition",
+  "item.minecraft.lingering_potion.effect.teleport_nether_potion": "Lingering Potion of Nether Transposition",
+  "item.minecraft.splash_potion.effect.teleport_nether_potion": "Splash Potion of Nether Transposition"
 }

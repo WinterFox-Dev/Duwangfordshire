@@ -3,7 +3,10 @@ package com.sheppard.registry;
 import com.sheppard.DuwangfordshireMod;
 import com.sheppard.item.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
@@ -12,6 +15,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.village.TradeOffer;
 
 public class ItemRegistry {
 
@@ -24,9 +28,21 @@ public class ItemRegistry {
     public static final Item ENDERITE_INGOT = new Item(new FabricItemSettings());
     public static final Item SYNTHETIC_ENDER_EYE = new SyntheticEyeOfEnderItem(new FabricItemSettings());
 
+    //food
+    public static final FoodComponent FC_AXOLOTL_ON_STICK = new FoodComponent.Builder().hunger(4).saturationModifier(0.25F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 500), 1.0F).build();
+    public static final Item AXOLOTL_ON_STICK = new Item(new FabricItemSettings().food(FC_AXOLOTL_ON_STICK));
+    public static final FoodComponent FC_COOKED_AXOLOTL_ON_STICK = new FoodComponent.Builder().hunger(4).saturationModifier(0.25F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 500, 1), 1.0F).build();
+    public static final Item COOKED_AXOLOTL_ON_STICK = new Item(new FabricItemSettings().food(FC_COOKED_AXOLOTL_ON_STICK));
+
+    //potions
     public static final Potion TELEPORT_POTION = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 20, 0)));
     public static final Potion TELEPORT_POTION_POTENT = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion_potent"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 20, 1)));
     public static final Potion TELEPORT_POTION_LONG = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion_long"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 40, 0)));
+    public static final Potion POTION_TELEPORT_BED = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_bed_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_BED, 1, 0)));
+    public static final Potion POTION_TELEPORT_END = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_end_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_END, 1, 0)));
+    public static final Potion POTION_TELEPORT_NETHER = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_nether_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_NETHER, 1, 0)));
 
     //item groups
     private static final ItemGroup DUWANGFORD_ITEMGROUP = ItemGroup.create(ItemGroup.Row.TOP, 1)
@@ -44,6 +60,8 @@ public class ItemRegistry {
                 entries.add(ItemRegistry.GUNPOWDER_SACHET);
                 entries.add(ItemRegistry.ENDERITE_INGOT);
                 entries.add(ItemRegistry.SYNTHETIC_ENDER_EYE);
+                entries.add(ItemRegistry.AXOLOTL_ON_STICK);
+                entries.add(ItemRegistry.COOKED_AXOLOTL_ON_STICK);
             })
             .build();
 
@@ -59,6 +77,8 @@ public class ItemRegistry {
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "gunpowder_sachet"), GUNPOWDER_SACHET);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "enderite_ingot"), ENDERITE_INGOT);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "synthetic_ender_eye"), SYNTHETIC_ENDER_EYE);
+        Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "axolotl_on_stick"), AXOLOTL_ON_STICK);
+        Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "cooked_axolotl_on_stick"), COOKED_AXOLOTL_ON_STICK);
     }
 
     public static void registerPotions() {
@@ -67,8 +87,9 @@ public class ItemRegistry {
 
     public static void registerPotionRecipes() {
         BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Items.ENDER_PEARL, ItemRegistry.TELEPORT_POTION);
-        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.GLOWSTONE_DUST, ItemRegistry.TELEPORT_POTION_POTENT);
-        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.REDSTONE, ItemRegistry.TELEPORT_POTION_LONG);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.WARPED_FUNGUS, ItemRegistry.POTION_TELEPORT_NETHER);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.SUNFLOWER, ItemRegistry.POTION_TELEPORT_BED);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, ItemRegistry.SYNTHETIC_ENDER_EYE, ItemRegistry.POTION_TELEPORT_END);
     }
 
     public static void registerItemGroups() {

@@ -28,6 +28,7 @@ public class DuwangfordshireMod implements ModInitializer {
 		StatusEffectRegistry.registerStatusEffects();
 		ItemRegistry.registerPotions();
 		ItemRegistry.registerPotionRecipes();
+		TradeOfferRegistry.registerTradeOffers();
 
 	}
 }

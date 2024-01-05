@@ -23,6 +23,9 @@
 		],
 		"client": [
 			"com.sheppard.DuwangfordshireClient"
+		],
+		"mixins": [
+			"duwangfordshire.mixins.json"
 		]
 	},
 	"depends": {
