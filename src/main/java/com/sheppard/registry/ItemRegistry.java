@@ -36,6 +36,14 @@ public class ItemRegistry {
             .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 500, 1), 1.0F).build();
     public static final Item COOKED_AXOLOTL_ON_STICK = new Item(new FabricItemSettings().food(FC_COOKED_AXOLOTL_ON_STICK));
 
+    public static final FoodComponent FC_COOKED_BLUE_AXOLOTL_ON_STICK = new FoodComponent.Builder().hunger(16).saturationModifier(1.0F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 500, 1), 1.0F)
+            .statusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST, 500, 1), 1.0F)
+            .build();
+
+    public static final Item BLUE_AXOLOTL_ON_STICK = new Item(new FabricItemSettings().food(FC_AXOLOTL_ON_STICK));
+    public static final Item COOKED_BLUE_AXOLOTL_ON_STICK = new Item(new FabricItemSettings().food(FC_COOKED_BLUE_AXOLOTL_ON_STICK));
+
     //potions
     public static final Potion TELEPORT_POTION = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 20, 0)));
     public static final Potion TELEPORT_POTION_POTENT = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion_potent"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 20, 1)));
@@ -63,6 +71,8 @@ public class ItemRegistry {
                 entries.add(ItemRegistry.SYNTHETIC_ENDER_EYE);
                 entries.add(ItemRegistry.AXOLOTL_ON_STICK);
                 entries.add(ItemRegistry.COOKED_AXOLOTL_ON_STICK);
+                entries.add(ItemRegistry.BLUE_AXOLOTL_ON_STICK);
+                entries.add(ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK);
             })
             .build();
 
@@ -80,6 +90,8 @@ public class ItemRegistry {
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "synthetic_ender_eye"), SYNTHETIC_ENDER_EYE);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "axolotl_on_stick"), AXOLOTL_ON_STICK);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "cooked_axolotl_on_stick"), COOKED_AXOLOTL_ON_STICK);
+        Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "blue_axolotl_on_stick"), BLUE_AXOLOTL_ON_STICK);
+        Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "cooked_blue_axolotl_on_stick"), COOKED_BLUE_AXOLOTL_ON_STICK);
     }
 
     public static void registerPotions() {

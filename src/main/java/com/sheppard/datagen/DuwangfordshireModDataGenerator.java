@@ -149,6 +149,7 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             RecipeProvider.offerBlasting(exporter, List.of(BlockRegistry.ENDERITE_ORE), RecipeCategory.MISC, ItemRegistry.ENDERITE_INGOT, 0.45F, 100, DuwangfordshireMod.MODID);
 
             RecipeProvider.offerSmelting(exporter, List.of(ItemRegistry.AXOLOTL_ON_STICK), RecipeCategory.FOOD, ItemRegistry.COOKED_AXOLOTL_ON_STICK, 1.0F, 200, DuwangfordshireMod.MODID);
+            RecipeProvider.offerSmelting(exporter, List.of(ItemRegistry.BLUE_AXOLOTL_ON_STICK), RecipeCategory.FOOD, ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK, 1.0F, 200, DuwangfordshireMod.MODID);
             //figure out that other cooking thing
             //RecipeProvider.offer(exporter, List.of(ItemRegistry.AXOLOTL_ON_STICK), RecipeCategory.FOOD, ItemRegistry.COOKED_AXOLOTL_ON_STICK, 1.0F, 100, DuwangfordshireMod.MODID);
         }
@@ -194,6 +195,8 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             itemModelGen.register(ItemRegistry.SYNTHETIC_ENDER_EYE, Models.GENERATED);
             itemModelGen.register(ItemRegistry.AXOLOTL_ON_STICK, Models.GENERATED);
             itemModelGen.register(ItemRegistry.COOKED_AXOLOTL_ON_STICK, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.BLUE_AXOLOTL_ON_STICK, Models.GENERATED);
         }
     }
 
@@ -218,6 +221,8 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             translationBuilder.add(BlockRegistry.ENDERITE_END_PORTAL_FRAME_BLOCK, "Enderite Portal Frame");
             translationBuilder.add(ItemRegistry.AXOLOTL_ON_STICK, "Axolotl on a Stick");
             translationBuilder.add(ItemRegistry.COOKED_AXOLOTL_ON_STICK, "Seared Axolotl on a Stick");
+            translationBuilder.add(ItemRegistry.BLUE_AXOLOTL_ON_STICK, "Blue Axolotl on a Stick");
+            translationBuilder.add(ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK, "Seared Blue Axolotl on a Stick");
 
             try {
                 Optional<Path> existingFilePath = dataOutput.getModContainer().findPath("assets/duwangfordshire/lang/en_us.existing.json");

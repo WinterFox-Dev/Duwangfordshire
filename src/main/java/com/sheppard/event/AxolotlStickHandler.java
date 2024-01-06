@@ -29,10 +29,18 @@ public class AxolotlStickHandler implements UseEntityCallback {
         if(!(player.getStackInHand(hand).getItem() == Items.STICK)) {
             return ActionResult.PASS;
         }
-        player.getStackInHand(hand).decrement(1);
-        player.giveItemStack(new ItemStack(ItemRegistry.AXOLOTL_ON_STICK));
-        world.playSound(player, player.getBlockPos(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-        hitResult.getEntity().discard();
-        return ActionResult.SUCCESS;
+        if(((AxolotlEntity)hitResult.getEntity()).getVariant() == AxolotlEntity.Variant.BLUE) {
+            player.getStackInHand(hand).decrement(1);
+            player.giveItemStack(new ItemStack(ItemRegistry.BLUE_AXOLOTL_ON_STICK));
+            world.playSound(player, player.getBlockPos(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+            hitResult.getEntity().discard();
+            return ActionResult.SUCCESS;
+        } else {
+            player.getStackInHand(hand).decrement(1);
+            player.giveItemStack(new ItemStack(ItemRegistry.AXOLOTL_ON_STICK));
+            world.playSound(player, player.getBlockPos(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+            hitResult.getEntity().discard();
+            return ActionResult.SUCCESS;
+        }
     }
 }
