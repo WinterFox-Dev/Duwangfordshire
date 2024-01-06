@@ -29,10 +29,10 @@ public class ItemRegistry {
     public static final Item SYNTHETIC_ENDER_EYE = new SyntheticEyeOfEnderItem(new FabricItemSettings());
 
     //food
-    public static final FoodComponent FC_AXOLOTL_ON_STICK = new FoodComponent.Builder().hunger(4).saturationModifier(0.25F)
+    public static final FoodComponent FC_AXOLOTL_ON_STICK = new FoodComponent.Builder().hunger(2).saturationModifier(0.10F)
             .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 500), 1.0F).build();
     public static final Item AXOLOTL_ON_STICK = new Item(new FabricItemSettings().food(FC_AXOLOTL_ON_STICK));
-    public static final FoodComponent FC_COOKED_AXOLOTL_ON_STICK = new FoodComponent.Builder().hunger(4).saturationModifier(0.25F)
+    public static final FoodComponent FC_COOKED_AXOLOTL_ON_STICK = new FoodComponent.Builder().hunger(10).saturationModifier(0.8f).meat()
             .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 500, 1), 1.0F).build();
     public static final Item COOKED_AXOLOTL_ON_STICK = new Item(new FabricItemSettings().food(FC_COOKED_AXOLOTL_ON_STICK));
 
@@ -43,6 +43,7 @@ public class ItemRegistry {
     public static final Potion POTION_TELEPORT_BED = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_bed_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_BED, 1, 0)));
     public static final Potion POTION_TELEPORT_END = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_end_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_END, 1, 0)));
     public static final Potion POTION_TELEPORT_NETHER = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_nether_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_NETHER, 1, 0)));
+    public static final Potion POTION_FORGIVE_ANGER = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "forgive_anger_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.FORGIVE_ANGER, 100, 0)));
 
     //item groups
     private static final ItemGroup DUWANGFORD_ITEMGROUP = ItemGroup.create(ItemGroup.Row.TOP, 1)
@@ -87,6 +88,7 @@ public class ItemRegistry {
 
     public static void registerPotionRecipes() {
         BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Items.ENDER_PEARL, ItemRegistry.TELEPORT_POTION);
+        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Items.DANDELION, ItemRegistry.POTION_FORGIVE_ANGER);
         BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.WARPED_FUNGUS, ItemRegistry.POTION_TELEPORT_NETHER);
         BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.SUNFLOWER, ItemRegistry.POTION_TELEPORT_BED);
         BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, ItemRegistry.SYNTHETIC_ENDER_EYE, ItemRegistry.POTION_TELEPORT_END);

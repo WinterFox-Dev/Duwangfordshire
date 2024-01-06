@@ -31,5 +31,11 @@
   "item.minecraft.potion.effect.teleport_nether_potion": "Potion of Nether Transposition",
   "item.minecraft.tipped_arrow.effect.teleport_nether_potion": "Arrow of Nether Transposition",
   "item.minecraft.lingering_potion.effect.teleport_nether_potion": "Lingering Potion of Nether Transposition",
-  "item.minecraft.splash_potion.effect.teleport_nether_potion": "Splash Potion of Nether Transposition"
+  "item.minecraft.splash_potion.effect.teleport_nether_potion": "Splash Potion of Nether Transposition",
+
+  "effect.duwangfordshire.forgive_anger": "Forgiveness",
+  "item.minecraft.potion.effect.forgive_anger_potion": "Potion of Forgiveness",
+  "item.minecraft.tipped_arrow.effect.forgive_anger_potion": "Arrow of Forgiveness",
+  "item.minecraft.lingering_potion.effect.forgive_anger_potion": "Lingering Potion of Forgiveness",
+  "item.minecraft.splash_potion.effect.forgive_anger_potion": "Splash Potion of Forgiveness"
 }

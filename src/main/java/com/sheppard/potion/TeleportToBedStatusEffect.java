@@ -21,7 +21,7 @@ public class TeleportToBedStatusEffect extends StatusEffect {
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        return true;
+        return duration == 1;
     }
 
     @Override

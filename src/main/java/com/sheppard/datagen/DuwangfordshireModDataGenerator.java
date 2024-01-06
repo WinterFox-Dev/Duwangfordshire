@@ -62,9 +62,9 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
                     .pattern("ZZZ")
                     .pattern(" Y ")
                     .pattern("YYY")
-                    .input('Z', Items.NETHERITE_BLOCK)
+                    .input('Z', Items.IRON_BLOCK)
                     .input('Y', Items.NETHERITE_INGOT)
-                    .criterion("has_netherite_block", conditionsFromItem(Items.NETHERITE_BLOCK))
+                    .criterion("has_iron_block", conditionsFromItem(Items.IRON_BLOCK))
                     .offerTo(exporter);
 
 
