@@ -223,6 +223,7 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             translationBuilder.add(ItemRegistry.COOKED_AXOLOTL_ON_STICK, "Seared Axolotl on a Stick");
             translationBuilder.add(ItemRegistry.BLUE_AXOLOTL_ON_STICK, "Blue Axolotl on a Stick");
             translationBuilder.add(ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK, "Seared Blue Axolotl on a Stick");
+            translationBuilder.add(ItemRegistry.DUCK_SPAWN_EGG, "Duck Spawn Egg");
 
             try {
                 Optional<Path> existingFilePath = dataOutput.getModContainer().findPath("assets/duwangfordshire/lang/en_us.existing.json");

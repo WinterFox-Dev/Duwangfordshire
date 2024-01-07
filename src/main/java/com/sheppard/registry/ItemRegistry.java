@@ -28,6 +28,8 @@ public class ItemRegistry {
     public static final Item ENDERITE_INGOT = new Item(new FabricItemSettings());
     public static final Item SYNTHETIC_ENDER_EYE = new SyntheticEyeOfEnderItem(new FabricItemSettings());
 
+    public static final Item DUCK_SPAWN_EGG = new SpawnEggItem(EntityRegistry.DUCK, 0x5e3217, 0x336323, new FabricItemSettings());
+
     //food
     public static final FoodComponent FC_AXOLOTL_ON_STICK = new FoodComponent.Builder().hunger(2).saturationModifier(0.10F)
             .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 500), 1.0F).build();
@@ -52,7 +54,6 @@ public class ItemRegistry {
     public static final Potion POTION_TELEPORT_END = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_end_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_END, 1, 0)));
     public static final Potion POTION_TELEPORT_NETHER = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_nether_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_NETHER, 1, 0)));
     public static final Potion POTION_FORGIVE_ANGER = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "forgive_anger_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.FORGIVE_ANGER, 100, 0)));
-
     //item groups
     private static final ItemGroup DUWANGFORD_ITEMGROUP = ItemGroup.create(ItemGroup.Row.TOP, 1)
             .icon(() -> new ItemStack(BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE))
@@ -73,6 +74,7 @@ public class ItemRegistry {
                 entries.add(ItemRegistry.COOKED_AXOLOTL_ON_STICK);
                 entries.add(ItemRegistry.BLUE_AXOLOTL_ON_STICK);
                 entries.add(ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK);
+                entries.add(ItemRegistry.DUCK_SPAWN_EGG);
             })
             .build();
 
@@ -92,6 +94,7 @@ public class ItemRegistry {
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "cooked_axolotl_on_stick"), COOKED_AXOLOTL_ON_STICK);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "blue_axolotl_on_stick"), BLUE_AXOLOTL_ON_STICK);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "cooked_blue_axolotl_on_stick"), COOKED_BLUE_AXOLOTL_ON_STICK);
+        Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "duck_spawn_egg"), DUCK_SPAWN_EGG);
     }
 
     public static void registerPotions() {

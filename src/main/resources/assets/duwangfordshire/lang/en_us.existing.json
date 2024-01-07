@@ -2,6 +2,8 @@
   "itemGroup.duwangfordshire.duwangfordshire_group": "Duwangfordshire Items",
   "enchantment.duwangfordshire.lava_walker": "Lava Walker",
   "effect.duwangfordshire.teleport": "Random Teleportation",
+  "entity.duwangfordshire.duck": "Duck",
+
   "item.minecraft.potion.effect.teleport_potion_potent": "Potion of Transposition",
   "item.minecraft.potion.effect.teleport_potion_long": "Potion of Transposition",
   "item.minecraft.potion.effect.teleport_potion": "Potion of Transposition",
