@@ -19,6 +19,7 @@ public class BlockRegistry {
     public static final Block CHERRY_BLOSSOM_CRAFTING_TABLE = new CherryCraftingTableBlock(FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE));
     public static final Block NETHERITE_ANVIL = new NetheriteAnvil(FabricBlockSettings.copyOf(Blocks.ANVIL));
     public static final Block ENDERITE_ORE = new Block(FabricBlockSettings.create().strength(1.5F).mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASEDRUM).requiresTool());
+    public static final Block ENDERITE_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK));
 
     public static final Block ENDERITE_END_PORTAL_FRAME_BLOCK = new EnderiteEndPortalFrameBlock(FabricBlockSettings.create().mapColor(MapColor.GREEN).instrument(Instrument.BASEDRUM).sounds(BlockSoundGroup.GLASS).luminance(state -> 1).strength(5.0f, 6.0f).requiresTool());
     public static void registerBlocks() {
@@ -26,5 +27,6 @@ public class BlockRegistry {
         Registry.register(Registries.BLOCK, new Identifier(DuwangfordshireMod.MODID, "netherite_anvil"), NETHERITE_ANVIL);
         Registry.register(Registries.BLOCK, new Identifier((DuwangfordshireMod.MODID), "enderite_ore"), ENDERITE_ORE);
         Registry.register(Registries.BLOCK, new Identifier((DuwangfordshireMod.MODID), "enderite_end_portal_frame"), ENDERITE_END_PORTAL_FRAME_BLOCK);
+        Registry.register(Registries.BLOCK, new Identifier((DuwangfordshireMod.MODID), "enderite_block"), ENDERITE_BLOCK);
     }
 }

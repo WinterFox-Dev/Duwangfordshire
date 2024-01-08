@@ -82,7 +82,7 @@ public class CherryCraftingScreenHandler extends AbstractRecipeScreenHandler<Rec
             ItemStack itemStack = ItemStack.EMPTY;
             Optional<RecipeEntry<CraftingRecipe>> optional = world.getServer().getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftingInventory, world);
             if (optional.isPresent()) {
-                RecipeEntry<CraftingRecipe> recipeEntry = (RecipeEntry)optional.get();
+                RecipeEntry<CraftingRecipe> recipeEntry = optional.get();
                 CraftingRecipe craftingRecipe = (CraftingRecipe)recipeEntry.value();
                 if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, recipeEntry)) {
                     ItemStack itemStack2 = craftingRecipe.craft(craftingInventory, world.getRegistryManager());

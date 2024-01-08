@@ -22,6 +22,10 @@ import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.data.server.tag.ItemTagProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
@@ -106,6 +110,15 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
                     .criterion("has_torch", conditionsFromItem(Items.TORCH))
                     .offerTo(exporter);
 
+            //Enderite Block
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.ENDERITE_BLOCK)
+                    .pattern("ZZZ")
+                    .pattern("ZZZ")
+                    .pattern("ZZZ")
+                    .input('Z', ItemRegistry.ENDERITE_INGOT)
+                    .criterion("has_enderite_ingot", conditionsFromItem(ItemRegistry.ENDERITE_INGOT))
+                    .offerTo(exporter);
+
             //Explosive Arrow
             ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ItemRegistry.EXPLOSIVE_ARROW, 3)
                     .pattern("  Z")
@@ -142,11 +155,17 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
                     .criterion("has_enderite_ingot", conditionsFromItem(ItemRegistry.ENDERITE_INGOT))
                     .offerTo(exporter);
 
+            //Enderite Block
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.ENDERITE_INGOT, 9)
+                    .input(BlockRegistry.ENDERITE_BLOCK, 1)
+                    .criterion("has_enderite_block", conditionsFromItem(BlockRegistry.ENDERITE_BLOCK))
+                    .offerTo(exporter);
+
             //SMELTING
 
             //enderite ingot
-            RecipeProvider.offerSmelting(exporter, List.of(BlockRegistry.ENDERITE_ORE), RecipeCategory.MISC, ItemRegistry.ENDERITE_INGOT, 0.45F, 200, DuwangfordshireMod.MODID);
-            RecipeProvider.offerBlasting(exporter, List.of(BlockRegistry.ENDERITE_ORE), RecipeCategory.MISC, ItemRegistry.ENDERITE_INGOT, 0.45F, 100, DuwangfordshireMod.MODID);
+            RecipeProvider.offerSmelting(exporter, List.of(BlockRegistry.ENDERITE_ORE, ItemRegistry.RAW_ENDERITE), RecipeCategory.MISC, ItemRegistry.ENDERITE_INGOT, 0.45F, 200, DuwangfordshireMod.MODID);
+            RecipeProvider.offerBlasting(exporter, List.of(BlockRegistry.ENDERITE_ORE, ItemRegistry.RAW_ENDERITE), RecipeCategory.MISC, ItemRegistry.ENDERITE_INGOT, 0.45F, 100, DuwangfordshireMod.MODID);
 
             RecipeProvider.offerSmelting(exporter, List.of(ItemRegistry.AXOLOTL_ON_STICK), RecipeCategory.FOOD, ItemRegistry.COOKED_AXOLOTL_ON_STICK, 1.0F, 200, DuwangfordshireMod.MODID);
             RecipeProvider.offerSmelting(exporter, List.of(ItemRegistry.BLUE_AXOLOTL_ON_STICK), RecipeCategory.FOOD, ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK, 1.0F, 200, DuwangfordshireMod.MODID);
@@ -166,7 +185,7 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
         public void generate() {
             addDrop(BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE, drops(BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE));
             addDrop(BlockRegistry.NETHERITE_ANVIL, drops(BlockRegistry.NETHERITE_ANVIL));
-            addDrop(BlockRegistry.ENDERITE_ORE, drops(BlockRegistry.ENDERITE_ORE));
+            addDrop(BlockRegistry.ENDERITE_BLOCK, drops(BlockRegistry.ENDERITE_BLOCK));
             addDrop(BlockRegistry.ENDERITE_END_PORTAL_FRAME_BLOCK, drops(BlockRegistry.ENDERITE_END_PORTAL_FRAME_BLOCK));
         }
     }
@@ -182,6 +201,7 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             //bsmGen.registerSimpleCubeAll(DuwangfordshireBlocks.CHERRY_BLOSSOM_CRAFTING_TABLE);
             bsmGen.registerAnvil(BlockRegistry.NETHERITE_ANVIL);
             bsmGen.registerSimpleCubeAll(BlockRegistry.ENDERITE_ORE);
+            bsmGen.registerSimpleCubeAll(BlockRegistry.ENDERITE_BLOCK);
         }
 
         @Override
@@ -197,6 +217,7 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             itemModelGen.register(ItemRegistry.COOKED_AXOLOTL_ON_STICK, Models.GENERATED);
             itemModelGen.register(ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK, Models.GENERATED);
             itemModelGen.register(ItemRegistry.BLUE_AXOLOTL_ON_STICK, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.RAW_ENDERITE, Models.GENERATED);
         }
     }
 
@@ -224,6 +245,8 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             translationBuilder.add(ItemRegistry.BLUE_AXOLOTL_ON_STICK, "Blue Axolotl on a Stick");
             translationBuilder.add(ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK, "Seared Blue Axolotl on a Stick");
             translationBuilder.add(ItemRegistry.DUCK_SPAWN_EGG, "Duck Spawn Egg");
+            translationBuilder.add(BlockRegistry.ENDERITE_BLOCK, "Block of Enderite");
+            translationBuilder.add(ItemRegistry.RAW_ENDERITE, "Raw Enderite");
 
             try {
                 Optional<Path> existingFilePath = dataOutput.getModContainer().findPath("assets/duwangfordshire/lang/en_us.existing.json");
