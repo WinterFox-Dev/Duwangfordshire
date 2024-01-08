@@ -18,8 +18,7 @@ public class TeleportToEndStatusEffect extends InstantStatusEffect {
 
     @Override
     public void applyInstantEffect(@Nullable Entity source, @Nullable Entity attacker, LivingEntity target, int amplifier, double proximity) {
-        //todo: fix bug where crashes if end doesnt exist yet
-        target.getEntityWorld().playSound(target, target.getBlockPos(), SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.NEUTRAL, 1.0F, 1.0F);
+        target.getEntityWorld().playSound(null, target.getBlockPos(), SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.NEUTRAL, 1.0F, 1.0F);
         World world = target.getEntityWorld();
         if(world instanceof ServerWorld serverWorld) {
             target.moveToWorld(serverWorld.getServer().getWorld(World.END));

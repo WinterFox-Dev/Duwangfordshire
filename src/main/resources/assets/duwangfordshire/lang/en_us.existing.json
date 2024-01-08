@@ -39,5 +39,41 @@
   "item.minecraft.potion.effect.forgive_anger_potion": "Potion of Forgiveness",
   "item.minecraft.tipped_arrow.effect.forgive_anger_potion": "Arrow of Forgiveness",
   "item.minecraft.lingering_potion.effect.forgive_anger_potion": "Lingering Potion of Forgiveness",
-  "item.minecraft.splash_potion.effect.forgive_anger_potion": "Splash Potion of Forgiveness"
+  "item.minecraft.splash_potion.effect.forgive_anger_potion": "Splash Potion of Forgiveness",
+
+  "effect.duwangfordshire.ninja_escape": "Ninja Escape",
+  "item.minecraft.potion.effect.ninja_escape_potion": "Potion of Rapid Escape",
+  "item.minecraft.tipped_arrow.effect.ninja_escape_potion": "Arrow of Rapid Escape",
+  "item.minecraft.lingering_potion.effect.ninja_escape_potion": "Lingering Potion of Rapid Escape",
+  "item.minecraft.splash_potion.effect.ninja_escape_potion": "Splash Potion of Rapid Escape",
+
+  "item.minecraft.potion.effect.dolphin_grace_potion": "Potion of Dolphin's Grace",
+  "item.minecraft.tipped_arrow.effect.dolphin_grace_potion": "Arrow of Dolphin's Grace",
+  "item.minecraft.lingering_potion.effect.dolphin_grace_potion": "Lingering Potion of Dolphin's Grace",
+  "item.minecraft.splash_potion.effect.dolphin_grace_potion": "Splash Potion of Dolphin's Grace",
+
+  "item.minecraft.potion.effect.dolphin_grace_potion_long": "Potion of Dolphin's Grace",
+  "item.minecraft.tipped_arrow.effect.dolphin_grace_potion_long": "Arrow of Dolphin's Grace",
+  "item.minecraft.lingering_potion.effect.dolphin_grace_potion_long": "Lingering Potion of Dolphin's Grace",
+  "item.minecraft.splash_potion.effect.dolphin_grace_potion_long": "Splash Potion of Dolphin's Grace",
+
+  "item.minecraft.potion.effect.dolphin_grace_potion_potent": "Potion of Dolphin's Grace",
+  "item.minecraft.tipped_arrow.effect.dolphin_grace_potion_potent": "Arrow of Dolphin's Grace",
+  "item.minecraft.lingering_potion.effect.dolphin_grace_potion_potent": "Lingering Potion of Dolphin's Grace",
+  "item.minecraft.splash_potion.effect.dolphin_grace_potion_potent": "Splash Potion of Dolphin's Grace",
+
+  "item.minecraft.potion.effect.haste_potion": "Potion of Haste",
+  "item.minecraft.tipped_arrow.effect.haste_potion": "Arrow of Haste",
+  "item.minecraft.lingering_potion.effect.haste_potion": "Lingering Potion of Haste",
+  "item.minecraft.splash_potion.effect.haste_potion": "Splash Potion of Haste",
+
+  "item.minecraft.potion.effect.haste_potion_long": "Potion of Haste",
+  "item.minecraft.tipped_arrow.effect.haste_potion_long": "Arrow of Haste",
+  "item.minecraft.lingering_potion.effect.haste_potion_long": "Lingering Haste",
+  "item.minecraft.splash_potion.effect.haste_potion_long": "Splash Potion of Haste",
+
+  "item.minecraft.potion.effect.haste_potion_potent": "Potion of Haste",
+  "item.minecraft.tipped_arrow.effect.haste_potion_potent": "Arrow of Haste",
+  "item.minecraft.lingering_potion.effect.haste_potion_potent": "Lingering Potion of Haste",
+  "item.minecraft.splash_potion.effect.haste_potion_potent": "Splash Potion of Haste"
 }

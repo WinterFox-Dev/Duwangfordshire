@@ -3,9 +3,6 @@ package com.sheppard.registry;
 import com.sheppard.DuwangfordshireMod;
 import com.sheppard.item.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
-import net.minecraft.entity.effect.InstantStatusEffect;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -16,7 +13,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.village.TradeOffer;
 
 public class ItemRegistry {
 
@@ -29,6 +25,10 @@ public class ItemRegistry {
     public static final Item ENDERITE_INGOT = new Item(new FabricItemSettings());
     public static final Item SYNTHETIC_ENDER_EYE = new SyntheticEyeOfEnderItem(new FabricItemSettings());
     public static final Item RAW_ENDERITE = new Item(new FabricItemSettings());
+
+    public static final Item NINJA_POWDER = new Item(new FabricItemSettings());
+    public static final Item STIMULATING_POWDER = new Item(new FabricItemSettings());
+    public static final Item DOLPHIN_FIN = new Item(new FabricItemSettings());
 
     public static final Item DUCK_SPAWN_EGG = new SpawnEggItem(EntityRegistry.DUCK, 0x5e3217, 0x336323, new FabricItemSettings());
 
@@ -49,13 +49,24 @@ public class ItemRegistry {
     public static final Item COOKED_BLUE_AXOLOTL_ON_STICK = new Item(new FabricItemSettings().food(FC_COOKED_BLUE_AXOLOTL_ON_STICK));
 
     //potions
-    public static final Potion TELEPORT_POTION = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 40, 0)));
-    public static final Potion TELEPORT_POTION_POTENT = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion_potent"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 40, 1)));
-    public static final Potion TELEPORT_POTION_LONG = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion_long"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 80, 0)));
+    public static final Potion POTION_TELEPORT = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 40, 0)));
+    public static final Potion POTION_TELEPORT_POTENT = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion_potent"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 40, 1)));
+    public static final Potion POTION_TELEPORT_LONG = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_potion_long"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT, 80, 0)));
     public static final Potion POTION_TELEPORT_BED = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_bed_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_BED, 1, 0)));
     public static final Potion POTION_TELEPORT_END = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_end_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_END, 1, 0)));
     public static final Potion POTION_TELEPORT_NETHER = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "teleport_nether_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.TELEPORT_NETHER, 1, 0)));
     public static final Potion POTION_FORGIVE_ANGER = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "forgive_anger_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.FORGIVE_ANGER, 100, 0)));
+
+    public static final Potion POTION_NINJA_ESCAPE = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "ninja_escape_potion"), new Potion(new StatusEffectInstance(StatusEffectRegistry.NINJA_ESCAPE,1, 0)));
+
+    public static final Potion POTION_HASTE = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "haste_potion"), new Potion(new StatusEffectInstance(StatusEffects.HASTE, 4800, 0)));
+    public static final Potion POTION_DOLPHIN_GRACE = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "dolphin_grace_potion"), new Potion(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 4800, 0)));
+
+    public static final Potion POTION_HASTE_POTENT = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "haste_potion_potent"), new Potion(new StatusEffectInstance(StatusEffects.HASTE, 4800, 1)));
+    public static final Potion POTION_DOLPHIN_GRACE_POTENT = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "dolphin_grace_potion_potent"), new Potion(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 4800, 1)));
+    public static final Potion POTION_HASTE_LONG = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "haste_potion_long"), new Potion(new StatusEffectInstance(StatusEffects.HASTE, 9600, 0)));
+    public static final Potion POTION_DOLPHIN_GRACE_LONG = Registry.register(Registries.POTION, new Identifier(DuwangfordshireMod.MODID, "dolphin_grace_potion_long"), new Potion(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 9600, 0)));
+
     //item groups
     private static final ItemGroup DUWANGFORD_ITEMGROUP = ItemGroup.create(ItemGroup.Row.TOP, 1)
             .icon(() -> new ItemStack(BlockRegistry.CHERRY_BLOSSOM_CRAFTING_TABLE))
@@ -79,6 +90,9 @@ public class ItemRegistry {
                 entries.add(ItemRegistry.DUCK_SPAWN_EGG);
                 entries.add(BlockRegistry.ENDERITE_BLOCK);
                 entries.add(ItemRegistry.RAW_ENDERITE);
+                entries.add(ItemRegistry.NINJA_POWDER);
+                entries.add(ItemRegistry.STIMULATING_POWDER);
+                entries.add(ItemRegistry.DOLPHIN_FIN);
             })
             .build();
 
@@ -101,6 +115,9 @@ public class ItemRegistry {
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "duck_spawn_egg"), DUCK_SPAWN_EGG);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "raw_enderite"), RAW_ENDERITE);
         Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "enderite_block"), new BlockItem(BlockRegistry.ENDERITE_BLOCK, new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "ninja_powder"), NINJA_POWDER);
+        Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "stimulating_powder"), STIMULATING_POWDER);
+        Registry.register(Registries.ITEM, new Identifier(DuwangfordshireMod.MODID, "dolphin_fin"), DOLPHIN_FIN);
     }
 
     public static void registerPotions() {
@@ -108,13 +125,20 @@ public class ItemRegistry {
     }
 
     public static void registerPotionRecipes() {
-        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Items.ENDER_PEARL, ItemRegistry.TELEPORT_POTION);
+        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Items.ENDER_PEARL, ItemRegistry.POTION_TELEPORT);
         BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Items.DANDELION, ItemRegistry.POTION_FORGIVE_ANGER);
-        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.GLOWSTONE_DUST, ItemRegistry.TELEPORT_POTION_POTENT);
-        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.REDSTONE, ItemRegistry.TELEPORT_POTION_LONG);
-        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.WARPED_FUNGUS, ItemRegistry.POTION_TELEPORT_NETHER);
-        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, Items.SUNFLOWER, ItemRegistry.POTION_TELEPORT_BED);
-        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.TELEPORT_POTION, ItemRegistry.SYNTHETIC_ENDER_EYE, ItemRegistry.POTION_TELEPORT_END);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.POTION_TELEPORT, Items.GLOWSTONE_DUST, ItemRegistry.POTION_TELEPORT_POTENT);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.POTION_TELEPORT, Items.REDSTONE, ItemRegistry.POTION_TELEPORT_LONG);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.POTION_TELEPORT, Items.WARPED_FUNGUS, ItemRegistry.POTION_TELEPORT_NETHER);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.POTION_TELEPORT, Items.SUNFLOWER, ItemRegistry.POTION_TELEPORT_BED);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.POTION_TELEPORT, ItemRegistry.SYNTHETIC_ENDER_EYE, ItemRegistry.POTION_TELEPORT_END);
+        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, ItemRegistry.NINJA_POWDER, ItemRegistry.POTION_NINJA_ESCAPE);
+        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, ItemRegistry.STIMULATING_POWDER, ItemRegistry.POTION_HASTE);
+        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, ItemRegistry.DOLPHIN_FIN, ItemRegistry.POTION_DOLPHIN_GRACE);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.POTION_HASTE, Items.GLOWSTONE_DUST, ItemRegistry.POTION_HASTE_POTENT);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.POTION_DOLPHIN_GRACE, Items.GLOWSTONE_DUST, ItemRegistry.POTION_DOLPHIN_GRACE_POTENT);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.POTION_HASTE, Items.REDSTONE, ItemRegistry.POTION_HASTE_LONG);
+        BrewingRecipeRegistry.registerPotionRecipe(ItemRegistry.POTION_DOLPHIN_GRACE, Items.REDSTONE, ItemRegistry.POTION_DOLPHIN_GRACE_LONG);
     }
 
     public static void registerItemGroups() {

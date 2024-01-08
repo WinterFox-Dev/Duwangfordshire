@@ -16,6 +16,8 @@ public class StatusEffectRegistry {
     public static final StatusEffect FORGIVE_ANGER = new ResetAggroStatusEffect();
     public static final StatusEffect SLIPPERY = new SlipperyStatusEffect();
 
+    public static final StatusEffect NINJA_ESCAPE = new NinjaEscapeStatusEffect();
+
     public static void registerStatusEffects() {
         Registry.register(Registries.STATUS_EFFECT, new Identifier(DuwangfordshireMod.MODID, "teleport"), TELEPORT);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(DuwangfordshireMod.MODID, "teleport_end"), TELEPORT_END);
@@ -23,5 +25,6 @@ public class StatusEffectRegistry {
         Registry.register(Registries.STATUS_EFFECT, new Identifier(DuwangfordshireMod.MODID, "teleport_bed"), TELEPORT_BED);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(DuwangfordshireMod.MODID, "forgive_anger"), FORGIVE_ANGER);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(DuwangfordshireMod.MODID, "slippery"), SLIPPERY);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(DuwangfordshireMod.MODID, "ninja_escape"), NINJA_ESCAPE);
     }
 }

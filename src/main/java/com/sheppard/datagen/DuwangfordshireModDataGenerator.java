@@ -1,7 +1,9 @@
 package com.sheppard.datagen;
 
 import com.sheppard.DuwangfordshireMod;
+import com.sheppard.registry.BiomeRegistry;
 import com.sheppard.registry.BlockRegistry;
+import com.sheppard.registry.DimensionRegistry;
 import com.sheppard.registry.ItemRegistry;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -28,8 +30,11 @@ import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryBuilder;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.world.biome.Biome;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -45,6 +50,14 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
         pack.addProvider(DuwangfordshireModelGenerator::new);
         pack.addProvider(DuwangfordshireLootTableGenerator::new);
         pack.addProvider(DuwangfordshireRecipeGenerator::new);
+        pack.addProvider(DuwangWorldGenerator::new);
+    }
+
+    @Override
+    public void buildRegistry(RegistryBuilder registryBuilder) {
+        registryBuilder.addRegistry(RegistryKeys.DIMENSION_TYPE, DimensionRegistry::bootstrapType);
+        //registryBuilder.addRegistry(RegistryKeys.BIOME, BiomeRegistry::bootstrapBiomes);
+        //registryBuilder.addRegistry(RegistryKeys.MATERIAL_RULE, BiomeRegistry::bootstrapMaterialRules);
     }
 
     private static class DuwangfordshireRecipeGenerator extends FabricRecipeProvider {
@@ -155,6 +168,20 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
                     .criterion("has_enderite_ingot", conditionsFromItem(ItemRegistry.ENDERITE_INGOT))
                     .offerTo(exporter);
 
+            //Ninja Powder
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.NINJA_POWDER, 2)
+                    .input(Items.GOLDEN_CARROT, 1)
+                    .input(Items.LILAC, 1)
+                    .criterion("has_lilac", conditionsFromItem(Items.LILAC))
+                    .offerTo(exporter);
+
+            //Stimulating Powder
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.STIMULATING_POWDER, 2)
+                    .input(Items.SUGAR, 1)
+                    .input(Items.LILY_OF_THE_VALLEY, 1)
+                    .criterion("has_lily", conditionsFromItem(Items.LILY_OF_THE_VALLEY))
+                    .offerTo(exporter);
+
             //Enderite Block
             ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.ENDERITE_INGOT, 9)
                     .input(BlockRegistry.ENDERITE_BLOCK, 1)
@@ -218,6 +245,9 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             itemModelGen.register(ItemRegistry.COOKED_BLUE_AXOLOTL_ON_STICK, Models.GENERATED);
             itemModelGen.register(ItemRegistry.BLUE_AXOLOTL_ON_STICK, Models.GENERATED);
             itemModelGen.register(ItemRegistry.RAW_ENDERITE, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.NINJA_POWDER, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.STIMULATING_POWDER, Models.GENERATED);
+            itemModelGen.register(ItemRegistry.DOLPHIN_FIN, Models.GENERATED);
         }
     }
 
@@ -247,6 +277,9 @@ public class DuwangfordshireModDataGenerator implements DataGeneratorEntrypoint 
             translationBuilder.add(ItemRegistry.DUCK_SPAWN_EGG, "Duck Spawn Egg");
             translationBuilder.add(BlockRegistry.ENDERITE_BLOCK, "Block of Enderite");
             translationBuilder.add(ItemRegistry.RAW_ENDERITE, "Raw Enderite");
+            translationBuilder.add(ItemRegistry.NINJA_POWDER, "Ninja Powder");
+            translationBuilder.add(ItemRegistry.STIMULATING_POWDER, "Stimulating Powder");
+            translationBuilder.add(ItemRegistry.DOLPHIN_FIN, "Dolphin Fin");
 
             try {
                 Optional<Path> existingFilePath = dataOutput.getModContainer().findPath("assets/duwangfordshire/lang/en_us.existing.json");
